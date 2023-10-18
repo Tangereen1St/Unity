@@ -5,4 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes: []
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 4c7061ee14c92a04091034ac6709effd, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 29558d6d4acd5a44f90475f1e8329f3d, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 8030e887f70a64545b019bb407b08c3a, type: 2}
