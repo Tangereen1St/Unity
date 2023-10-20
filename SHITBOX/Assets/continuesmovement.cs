@@ -7,8 +7,12 @@ public class continuesmovement : MonoBehaviour
 {
     public float speed = 1;
     public float turnSpeed = 60;
+    private float jumpVelocity = 7;
+    public float jumpHeight = 1.5f;
+    public bool onlyMoveWhenGrounded = false;
     public InputActionProperty moveInputSource;
     public InputActionProperty turnInputSource;
+    public InputActionProperty jumpInputsource;
     public Rigidbody rb;
     public LayerMask groundLayer;
     public Transform directionSource;
@@ -16,6 +20,7 @@ public class continuesmovement : MonoBehaviour
     public CapsuleCollider bodyCollider;
     private Vector2 InputMoveAxis;
     private float inputTurnAxis;
+    private bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
@@ -28,13 +33,21 @@ public class continuesmovement : MonoBehaviour
     {
         InputMoveAxis = moveInputSource.action.ReadValue<Vector2>();
         inputTurnAxis = turnInputSource.action.ReadValue<Vector2>().x;
+
+        bool jumpInput = jumpInputsource.action.WasPressedThisFrame();
+
+        if (jumpInput && isGrounded)
+        {
+            jumpVelocity = Mathf.Sqrt(2 * -Physics.gravity.y * jumpHeight);
+            rb.velocity = Vector3.up * jumpVelocity;
+        }
     }
 
     private void FixedUpdate()
     {
-        bool isGrounded = CheckIfGrounded();
+         isGrounded = CheckIfGrounded();
 
-        if (isGrounded)
+        if (!onlyMoveWhenGrounded || (onlyMoveWhenGrounded && isGrounded))
         {
             Quaternion yaw = Quaternion.Euler(0, directionSource.eulerAngles.y, 0);
             Vector3 direction = yaw * new Vector3(InputMoveAxis.x, 0, InputMoveAxis.y);

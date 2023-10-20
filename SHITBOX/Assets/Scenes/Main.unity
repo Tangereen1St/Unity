@@ -1452,6 +1452,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   turnSpeed: 90
+  jumpHeight: 1.5
+  onlyMoveWhenGrounded: 0
   moveInputSource:
     m_UseReference: 1
     m_Action:
@@ -1476,6 +1478,18 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -6493913391331992944, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  jumpInputsource:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Jump Inputsource
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 974ba2f0-f9fa-4d54-a156-db165a224168
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -3601741483320007841, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   rb: {fileID: 1882084285}
   groundLayer:
     serializedVersion: 2
@@ -4312,7 +4326,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.02
+  m_Radius: 0.06
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
