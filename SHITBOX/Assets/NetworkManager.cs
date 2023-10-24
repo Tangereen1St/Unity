@@ -32,7 +32,7 @@ void ConnectToServer()
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("Joined a Room");
+        Debug.Log("JOINED A ROOM");
         base.OnJoinedRoom();
 
     }
